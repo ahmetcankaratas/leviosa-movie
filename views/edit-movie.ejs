@@ -1,0 +1,102 @@
+<!-- Header -->
+<%- include('partials/_header') -%>
+<!-- end of header -->
+
+<body>
+    <!-- Navigation -->
+    <%- include('partials/_navigation') -%>
+
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Profile</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="/">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>EDIT MOVIE</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="user-information">
+					<div class="user-img">
+						<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
+					</div>
+					<div class="user-fav">
+						<p>Menu</p>
+						<ul>
+							<li><a href="/profile">My Movies</a></li>
+							<li ><a href="/add-movie">Add Movie</a></li>
+							<li><a href="/my-actors">My Actors</a></li>
+							<li><a href="/add-actor">Add Actor</a></li>
+						</ul>
+					</div>
+					<div class="user-fav">
+						<p>Account</p>
+						<ul>
+							<li><a href="/logout">Log out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="form-style-1 user-pro" action="">
+					<% if (movie) { %>
+					<form id="movie-form" class="user">
+						<h4>Movie Details</h4>
+						<div class="row">
+							<div class="col-md-12 form-it">
+								<label>Name</label>
+								<input name="name" type="text" placeholder="" value="<%= movie.name %>">
+							</div>
+							<div class="col-md-12 form-it" >
+								<label>Overview</label>
+								<textarea id = "description" name="overview" type="text" placeholder="" row="4"><%= movie.overview %></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Share</label>
+								<select name="isPublic">
+									<option value="false">No</option>
+									<option value="true">Yes</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2 form-it">
+								<label>MovieId</label>
+								<select name="movieId"><option selected disabled value="<%= movie.id %>"><%= movie.id %></option></select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input class="submit" type="submit" value="update">
+							</div>
+						</div>	
+						<br>
+						<div class="row">
+							<div class="col-md-12 form-it">
+								<label id="movie-res"></label>
+							</div>
+						  </div>
+					</form>	
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- footer section-->
+<%- include('partials/_footer') -%>
+<!-- end of footer section-->
+<script src="/js/movie.js"></script>
+</body>
+</html>

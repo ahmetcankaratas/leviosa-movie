@@ -1,0 +1,173 @@
+<!-- Header -->
+<%- include('partials/_header') -%>
+<!-- end of header -->
+<body>
+<!-- Navigation -->
+<%- include('partials/_navigation') -%>
+
+    <div class="slider movie-items">
+      <div class="container">
+        <div class="row">
+          <div class="social-link">
+            <p>Follow me:</p>
+            <a href="https://github.com/lingardium"><i class="ion-social-github"></i></a>
+          </div>
+          <div class="slick-multiItemSlider">
+            <% if (editor) { %>
+              <% editor.forEach(function(editorMovie){ %>
+                <div class="movie-item">
+                  <div class="mv-img">
+                    <a href="/movie/<%= editorMovie.id %>"
+                      ><img
+                        src="images/uploads/<%= editorMovie.poster %>.jpg"
+                        alt=""
+                        width="285"
+                        height="437"
+                    /></a>
+                  </div>
+                  <div class="title-in">
+                    <h6><a href="/movie/<%= editorMovie.id %>"><%= editorMovie.name %></a></h6>
+                  </div>
+                </div>
+            <% }); %>	
+            <% editor.forEach(function(editorMovie){ %>
+              <div class="movie-item">
+                <div class="mv-img">
+                  <a href="/movie/<%= editorMovie.id %>"
+                    ><img
+                      src="images/uploads/<%= editorMovie.poster %>.jpg"
+                      alt=""
+                      width="285"
+                      height="437"
+                  /></a>
+                </div>
+                <div class="title-in">
+                  <h6><a href="/movie/<%= editorMovie.id %>"><%= editorMovie.name %></a></h6>
+                </div>
+              </div>
+          <% }); %>	
+          <% editor.forEach(function(editorMovie){ %>
+            <div class="movie-item">
+              <div class="mv-img">
+                <a href="/movie/<%= editorMovie.id %>"
+                  ><img
+                    src="images/uploads/<%= editorMovie.poster %>.jpg"
+                    alt=""
+                    width="285"
+                    height="437"
+                /></a>
+              </div>
+              <div class="title-in">
+                <h6><a href="/movie/<%= editorMovie.id %>"><%= editorMovie.name %></a></h6>
+              </div>
+            </div>
+        <% }); %>	
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="movie-items">
+      <div class="container">
+        <div class="row ipad-width">
+          <div class="col-md-16">
+            <div class="title-hd">
+              <h2>MOVIES</h2>
+              <a href="/movie" class="viewall"
+                >View all <i class="ion-ios-arrow-right"></i
+              ></a>
+            </div>
+            <div class="tabs">
+              <ul class="tab-links">
+                <li class="active"><a>#Recently Added</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="tab1" class="tab active">
+                  <div class="row">
+                    <div class="slick-multiItem">
+                      <% if (movies) { %>
+                        <% movies.forEach(function(movie){ %>
+                          <div class="slide-it">
+                            <div class="movie-item">
+                              <div class="mv-img">
+                                <img
+                                  src="images/uploads/<%= movie.poster %>.jpg"
+                                  alt=""
+                                  width="185"
+                                  height="284"
+                                />
+                              </div>
+                              <div class="hvr-inner">
+                                <a href="/movie/<%= movie.id %>">
+                                  Read more
+                                  <i class="ion-android-arrow-dropright"></i>
+                                </a>
+                              </div>
+                              <div class="title-in">
+                                <h6><a href="/movie/<%= movie.id %>"><%= movie.name %></a></h6>
+                              </div>
+                            </div>
+                          </div>
+                      <% }); %>	
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="title-hd">
+              <h2>Actors</h2>
+              <a href="/actor" class="viewall"
+                >View all <i class="ion-ios-arrow-right"></i
+              ></a>
+            </div>
+            <div class="tabs">
+              <ul class="tab-links-2">
+                <li class="active"><a>#Recently Added</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="tab21" class="tab active">
+                  <div class="row">
+                    <div class="slick-multiItem">
+                      <% if (actors) { %>
+                        <% actors.forEach(function(actor){ %>
+                          <div class="slide-it">
+                            <div class="movie-item">
+                              <div class="mv-img">
+                                <img
+                                  src="images/uploads/a<%= actor.poster %>.jpeg"
+                                  alt=""
+                                  width="185"
+                                  height="284"
+                                />
+                              </div>
+                              <div class="hvr-inner">
+                                <a href="/actor/<%= actor.id %>">
+                                  Read more
+                                  <i class="ion-android-arrow-dropright"></i>
+                                </a>
+                              </div>
+                              <div class="title-in">
+                                <h6><a href="/actor/<%= actor.id %>"><%= actor.fullname %></a></h6>
+                              </div>
+                            </div>
+                          </div>
+                      <% }); %>	
+                      <% } %>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer section-->
+    <%- include('partials/_footer') -%>
+    <!-- end of footer section-->
+  </body>
+</html>

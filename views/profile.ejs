@@ -1,0 +1,113 @@
+<!-- Header -->
+<%- include('partials/_header') -%>
+<!-- end of header -->
+<body>
+    <!-- Navigation -->
+    <%- include('partials/_navigation') -%>
+
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Profile</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="/">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>My Movies</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single userfav_list">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="user-information">
+					<div class="user-img">
+						<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
+					</div>
+					<div class="user-fav">
+						<p>Menu</p>
+						<ul>
+							<li class="active"><a href="/profile">My Movies</a></li>
+							<li><a href="/add-movie">Add Movie</a></li>
+							<li><a href="/my-actors">My Actors</a></li>
+							<li><a href="/add-actor">Add Actor</a></li>
+						</ul>
+					</div>
+					<div class="user-fav">
+						<p>Account</p>
+						<ul>
+							<li><a href="/logout">Log out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="topbar-filter user">
+					<p>Found <span><%= data.length %> movies</span> in total</p>
+				</div>
+				<div class="flex-wrap-movielist user-fav-list">
+					<% if (data) { %>
+					<% data.forEach(function(movie){ %>
+					<div class="movie-item-style-2">
+						<img src="images/uploads/<%= movie.poster %>.jpg" alt="">
+						<div class="mv-item-infor">
+							<h6><a href="#"><%= movie.name %></a></h6>
+							<p class="describe"><%= movie.overview %></p>
+							<% if(movie.isPublic){%>
+							<p>Shared</p>
+							<% } %>
+							<% if(!movie.isPublic){%>
+								<p onclick="shareFunction('<%= movie.id %>')"><a>Share</a></p>
+								<% } %>
+							<p><a href="/movie/edit/<%= movie.id %>">Edit</a></p>
+							<p onclick="deleteFunction('<%= movie.id %>')"><a>Delete</a></p>
+						</div>
+					</div>
+					<% }); %>	
+					<% } %>
+				</div>		
+			</div>
+		</div>
+	</div>
+</div>
+<!-- footer section-->
+<%- include('partials/_footer') -%>
+<!-- end of footer section-->
+<script>
+	async function deleteFunction(param) {
+	  try {
+      const res = await fetch(`/movie/${param}`, {
+        method: 'DELETE'
+      });
+
+      await res.json();
+	  location.replace('/profile');
+
+    } catch (err) {
+      console.log(err);
+	  location.replace('/profile');
+    }
+	}
+
+	async function shareFunction(param) {
+	  try {
+      const res = await fetch(`movie/share/${param}`, {
+        method: 'PUT'
+      });
+
+      await res.json();
+	  location.replace('/profile');
+
+    } catch (err) {
+      console.log(err);
+	  location.replace('/profile');
+    }
+	}
+	
+	</script>
+</body>
+</html>

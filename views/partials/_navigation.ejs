@@ -1,0 +1,220 @@
+<!--preloading-->
+<div id="preloader">
+  <img class="logo" src="/images/logo1.png" alt="" width="119" height="58" />
+  <div id="status">
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<% if(!user.id) { %>
+<!--end of preloading-->
+<!--login form popup-->
+<div class="login-wrapper" id="login-content">
+  <div class="login-content">
+    <a href="#" class="close">x</a>
+    <h3>Login</h3>
+    <form id="login-form">
+      <div class="row">
+        <label for="username">
+          Username:
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder=""
+            required="required"
+          />
+        </label>
+      </div>
+
+      <div class="row">
+        <label for="password">
+          Password:
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder=""
+            required="required"
+          />
+        </label>
+      </div>
+      <div class="row">
+        <button id="submitRegister" type="submit">Login</button>
+      </div>
+    </form>
+    <div class="row">
+      <div id="login-res"></div>
+    </div>
+    <div class="row">
+      <p>Or via social</p>
+      <div class="social-btn-2">
+        <a class="tw" style="background: #dd4b39" href="<%= user.google %>"
+          ><i class="ion-social-google"></i>Google</a
+        >
+        <a class="fb" href="<%= user.facebook %>"
+          ><i class="ion-social-facebook"></i>facebook</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!--end of login form popup-->
+<!--signup form popup-->
+<div class="login-wrapper" id="signup-content">
+  <div class="login-content">
+    <a href="#" class="close">x</a>
+    <h3>sign up</h3>
+    <form id="signup-form">
+      <div class="row">
+        <label for="username-2">
+          Username:
+          <input
+            type="text"
+            name="username"
+            id="username-2"
+            placeholder=""
+            required="required"
+          />
+        </label>
+      </div>
+
+      <div class="row">
+        <label for="email-2">
+          your email:
+          <input
+            type="text"
+            name="email"
+            id="email-2"
+            placeholder=""
+            required="required"
+          />
+        </label>
+      </div>
+      <div class="row">
+        <label for="password-2">
+          Password:
+          <input
+            type="password"
+            name="password"
+            id="password-2"
+            placeholder=""
+            required="required"
+          />
+        </label>
+      </div>
+      <div class="row">
+        <button type="submit">sign up</button>
+      </div>
+      <div class="row">
+        <div id="signup-res"></div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--end of signup form popup-->
+
+<!-- BEGIN | Header -->
+<header class="ht-header">
+  <div class="container">
+    <nav class="navbar navbar-default navbar-custom">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header logo">
+        <div
+          class="navbar-toggle"
+          data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <div id="nav-icon1">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <a href="/"
+          ><img
+            class="logo"
+            src="/images/logo1.png"
+            alt=""
+            width="119"
+            height="58"
+        /></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div
+        class="collapse navbar-collapse flex-parent"
+        id="bs-example-navbar-collapse-1"
+      >
+        <ul class="nav navbar-nav flex-child-menu menu-left">
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/movie">MOVIES</a></li>
+          <li><a href="/actor">ACTORS</a></li>
+        </ul>
+        <ul class="nav navbar-nav flex-child-menu menu-right">
+          <li class="loginLink"><a href="#">LOG In</a></li>
+          <li class="btn signupLink"><a href="#">sign up</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+  </div>
+</header>
+<% } %>
+
+<!-- END | Header -->
+<% if(user.id) { %>
+<!-- BEGIN | Header -->
+<header class="ht-header">
+  <div class="container">
+    <nav class="navbar navbar-default navbar-custom">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header logo">
+        <div
+          class="navbar-toggle"
+          data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <div id="nav-icon1">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <a href="/"
+          ><img
+            class="logo"
+            src="/images/logo1.png"
+            alt=""
+            width="119"
+            height="58"
+        /></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div
+        class="collapse navbar-collapse flex-parent"
+        id="bs-example-navbar-collapse-1"
+      >
+        <ul class="nav navbar-nav flex-child-menu menu-left">
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/movie">MOVIES</a></li>
+          <li><a href="/actor">ACTORS</a></li>
+        </ul>
+        <ul class="nav navbar-nav flex-child-menu menu-right">
+          <li class=""><a href="/profile">Profile</a></li>
+          <li class="btn"><a href="/logout">log out</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+  </div>
+</header>
+<!-- END | Header -->
+<% } %>

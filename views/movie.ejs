@@ -1,0 +1,183 @@
+<!-- Header -->
+<%- include('partials/_header') -%>
+<!-- end of header -->
+
+<body>
+    <!-- Navigation -->
+    <%- include('partials/_navigation') -%>
+    <!-- end of navigation -->
+
+    <div class="hero mv-single-hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-single movie-single movie_single">
+      <div class="container">
+        <div class="row ipad-width2">
+          <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="movie-img">
+              <img src="/images/uploads/<%= movie.poster %>.jpg" alt="" />
+            </div>
+          </div>
+          <div class="col-md-8 col-sm-12 col-xs-12">
+            <% if (movie) { %>
+            <div class="movie-single-ct main-content">
+              <h1 class="bd-hd">
+                <%= movie.name %>
+              </h1>
+              <input id="id" value="<%= movie.id %>" disabled style="display: none;"></input>
+              <div class="social-btn">
+                <a class="parent-btn">
+                  <% if (user.id) { %>
+
+                  <% if (userLike) { %>
+                      <i class="ion-heart" onclick="unlikeFunction('<%= movie.id %>','<%= userLike %>')" style="cursor: pointer;"></i> Remove from Likes </a>
+                  <% } %>
+                  <% if (!userLike) { %>
+                    <i class="ion-plus" onclick="likeFunction('<%= movie.id %>')" style="cursor: pointer;"></i> Add to Like </a>
+                    <% } %>
+                    
+                    <% } %>
+
+                    <% if (!user.id) { %>  
+                      <i class="ion-plus" style="cursor: pointer;"></i> Login Required </a>
+                      <% } %>
+              </div>
+              <div class="movie-rate">
+                <div class="rate">
+                  <!-- <i class="ion-heart" style="color: #dd003f"></i> -->
+                  <p>
+                    <% if (likes) { %>
+                      <span><%=likes.length%> likes  </span><span> | Added by <%= movie.userId.userName %></span
+                      >
+                      <% } %>
+                  </p>
+                </div>
+              </div>
+              <div class="movie-tabs">
+                <div class="tabs">
+                  <ul class="tab-links tabs-mv">
+                    <li class="active"><a href="#">Description</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div id="reviews" class="tab review" style="display: block;">
+                      <div class="row">
+                        <div class="col-md-16 col-sm-12 col-xs-12">
+                          <p>
+                            <%= movie.overview %>
+                          </p>
+                        </div>
+                      </div>
+                      <br>
+                      <br>
+                      <div class="row">
+                        <div class="rv-hd">
+                          <div class="div">
+                            <h3>Related Movies To</h3>
+                            <h2><%= movie.name %></h2>
+                          </div>
+                          <a href="#addComment" class="redbtn">Write Comment</a>
+                        </div>
+                        <div class="topbar-filter">
+                          <p>Found <span><%=comments.length%> comments</span> in total</p>
+                        </div>
+                        <% if (comments) { %>
+                        <% comments.forEach(function(comment){ %>
+                        <div class="mv-user-review-item">
+                          <div class="user-infor">
+                            <div>
+                              <h3><%=comment.title%></h3>
+                            </div>
+                          </div>
+                          <p>
+                            <%=comment.text%>
+                          </p>
+                          <p class="time">
+                            sent by <%=comment.user.userName%>
+                          </p>
+                        </div>
+                        <% }); %>	
+                        <% } %>
+                        <div id="addComment" class="form-style-1 user-pro" action="">
+                          <% if (user.id) { %>
+                          <form id="movie-form" class="user">
+                            <div class="row">
+                              <div class="col-md-12 form-it">
+                                <label>Title</label>
+                                <input name="title" type="text" placeholder="">
+                              </div>
+                              <div class="col-md-12 form-it" >
+                                <label>Comment</label>
+                                <textarea id = "description" name="text" type="text" placeholder="" row="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-2">
+                                <input class="submit" type="submit" value="send">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 form-it">
+                                <label id="movie-res"></label>
+                              </div>
+                              </div>
+                            <br>
+                          </form>	
+                          <% } %>
+                          <% if (!user.id) { %>
+                          <p>You Must Be Logged In To Comment </p>
+                          <% } %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- footer section-->
+<%- include('partials/_footer') -%>
+<!-- end of footer section-->
+<% if (user.id) { %>
+<script src="/js/addComment.js"></script>
+<script>
+	async function likeFunction(param) {
+	  try {
+      const res = await fetch(`/movie/${param}/likes`, {
+        method: 'POST'
+      });
+      
+      await res.json();
+	  location.replace(`/movie/${param}/`);
+
+    } catch (err) {
+      console.log(err);
+      location.replace(`/movie/${param}/`);
+    }
+	}
+  async function unlikeFunction(movieId,likeId) {
+	  try {
+      const res = await fetch(`/movie/${movieId}/likes/${likeId}`, {
+        method: 'DELETE'
+      });
+
+    await res.json();
+    location.replace(`/movie/${movieId}`);
+    } catch (err) {
+      console.log(err);
+      location.replace(`/movie/${param}/`);
+    }
+	}
+	
+	</script>
+  <% } %>
+  </body>
+</html>

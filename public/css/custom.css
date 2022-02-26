@@ -1,0 +1,30 @@
+#description {
+  background-color: #233a50;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  height: 100px;
+  color: #abb7c4;
+  font-weight: 300;
+  background-color: #233a50;
+  border-radius: 3px !important;
+}
+
+.button {
+  font-family: 'Dosis', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+  background: #dd003f;
+  height: 40px;
+  -webkit-appearance: button;
+  cursor: pointer;
+  -webkit-border-radius: 50px !important;
+  -moz-border-radius: 50px !important;
+  border-radius: 50px !important;
+}
+
+.mv-item-infor p {
+  cursor: pointer;
+}

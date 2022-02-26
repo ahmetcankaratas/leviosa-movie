@@ -1,0 +1,56 @@
+<!-- Header -->
+<%- include('partials/_header') -%>
+<!-- end of header -->
+<body>
+<!-- Navigation -->
+<%- include('partials/_navigation') -%>
+
+    <div class="hero common-hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="hero-ct">
+              <h1>Movie Listing</h1>
+              <ul class="breadcumb">
+                <li class="active"><a href="/">Home</a></li>
+                <li><span class="ion-ios-arrow-right"></span> movie listing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="topbar-filter fw">
+              <p>Found <span><%= data.length %> movies</span> in total</p>
+            </div>
+            <div class="flex-wrap-movielist mv-grid-fw">
+              <% if (data) { %>
+                <% data.forEach(function(movie){ %>
+              <div class="movie-item-style-2 movie-item-style-1">
+                <img src="images/uploads/<%= movie.poster %>.jpg" alt="" />
+                <div class="hvr-inner">
+                  <a href="/movie/<%= movie.id %>">
+                    Read more <i class="ion-android-arrow-dropright"></i>
+                  </a>
+                </div>
+                <div class="mv-item-infor">
+                  <h6><a href="/movie/<%= movie.id %>"><%= movie.name %></a></h6>
+                </div>
+              </div>
+              <% }); %>	
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer section-->
+    <%- include('partials/_footer') -%>
+    <!-- end of footer section-->
+  </body>
+</html>
