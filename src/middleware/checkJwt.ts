@@ -24,7 +24,7 @@ export const checkJwt = function (
     });
   }
 
-  jwt.verify(token, config.jwt, async (err: any, decoded: any) => {
+  jwt.verify(token, config.jwt, async (err?: {message:string}, decoded?: {browserInfo: string}) => {
     if (
       decoded.browserInfo == session.browserInfo &&
       req.headers['user-agent'] == decoded.browserInfo

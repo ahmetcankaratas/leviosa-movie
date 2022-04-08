@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
 //Register Validation
-export const register = (data: any) => {
+export const register = (data: {email:string,username:string,password:string}) => {
   const schema = Joi.object({
     email: Joi.string().min(2).max(30).required(),
     username: Joi.string().min(2).max(15).required(),
@@ -11,7 +11,7 @@ export const register = (data: any) => {
 };
 
 //Login Validation
-export const login = (data: any) => {
+export const login = (data: {username:string,password:string}) => {
   const schema = Joi.object({
     username: Joi.string().min(2).max(15).required(),
     password: Joi.string().min(6).max(15).required(),
@@ -20,7 +20,7 @@ export const login = (data: any) => {
 };
 
 // Movie Validation
-export const movie = (data: any) => {
+export const movie = (data: {name:string,overview:string,isPublic:boolean}) => {
   const schema = Joi.object({
     name: Joi.string().min(2).max(30).required(),
     overview: Joi.string().min(20).max(300).required(),
@@ -30,7 +30,7 @@ export const movie = (data: any) => {
 };
 
 // Actor Validation
-export const actor = (data: any) => {
+export const actor = (data: {fullname:string,biography:string,isPublic:boolean}) => {
   const schema = Joi.object({
     fullname: Joi.string().min(2).max(30).required(),
     biography: Joi.string().min(20).max(300).required(),
@@ -40,7 +40,7 @@ export const actor = (data: any) => {
 };
 
 // Comment Validation
-export const comment = (data: any) => {
+export const comment = (data: {title:string,text:string}) => {
   const schema = Joi.object({
     title: Joi.string().min(2).max(30).required(),
     text: Joi.string().min(2).max(300).required(),
@@ -49,7 +49,7 @@ export const comment = (data: any) => {
 };
 
 // Like Validation
-export const like = (data: any) => {
+export const like = (data: {isLike:boolean}) => {
   const schema = Joi.object({
     isLike: Joi.boolean().required(),
   });

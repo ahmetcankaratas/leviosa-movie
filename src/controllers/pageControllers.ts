@@ -25,8 +25,7 @@ export const getIndex = async (req: Request, res: Response) => {
   // Get movie's and actor's details from the database
 
   // Get last added editor 9 movies
-  let editor;
-  editor = await Movie.find({
+    const editor = await Movie.find({
     where: {
       userId: 1,
       isPublic: true,
@@ -38,8 +37,7 @@ export const getIndex = async (req: Request, res: Response) => {
   });
 
   // Get last added 4 movie
-  let movie;
-  movie = await Movie.find({
+  const movie = await Movie.find({
     where: {
       isPublic: true,
     },
@@ -50,8 +48,7 @@ export const getIndex = async (req: Request, res: Response) => {
   });
 
   // Get last added 4 actors
-  let actor;
-  actor = await Actor.find({
+  const actor = await Actor.find({
     where: {
       isPublic: true,
     },

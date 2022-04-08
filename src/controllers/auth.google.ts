@@ -57,7 +57,7 @@ export const auth = async (req: Request, res: Response) => {
   }
 
   // Login via google
-  let userdata = await getGoogleUserInfo(access_token);
+  const userdata = await getGoogleUserInfo(access_token);
 
   try {
     const user = await User.findOne({
