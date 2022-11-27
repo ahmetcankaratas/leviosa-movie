@@ -1,12 +1,8 @@
 # Leviosa Movie
 
-Lingardium leviosa (öhö öhö..) .. Wingardium leviosa 🤓
-
 Freely like, share and comment your favorite movies and actors on leviosa movie 😎
 
 This project was created for Patika.dev Gusto&RemoteTeam sponsored NodeJs Bootcamp as final project
-
-Created by <a href='https://github.com/lingardium'>Ahmet Can Karataş</a>
 
 LiveURL: https://leviosa-movie.herokuapp.com/
 
@@ -45,13 +41,13 @@ A step by step guide that will tell you how to get the development environment u
 - Clone the repository
 
 ```
-git clone  https://github.com/lingardium/leviosaMovie
+git clone  https://github.com/lingardium/leviosa-movie
 ```
 
 - Install dependencies
 
 ```
-cd leviosaMovie
+cd leviosa-movie
 npm install
 ```
 
